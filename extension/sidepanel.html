@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MyDefector-sidecar</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">LOCAL CAPTURE</p>
+          <h1>MyDefector-sidecar</h1>
+        </div>
+        <button id="settings" class="secondary">Settings</button>
+      </header>
+      <p class="intro">Capture the problem. Keep the evidence with your notes.</p>
+      <p id="message" role="status" aria-live="polite">Restoring your draft…</p>
+      <div class="row">
+        <button id="capture">Capture visible page</button
+        ><button id="add-images-button" class="secondary">Add images</button
+        ><input id="add-images" type="file" accept="image/png,image/jpeg" multiple hidden />
+      </div>
+      <p class="hint">
+        On a new page, click the extension icon or press Ctrl/⌘+Shift+Y first. Screenshots contain
+        only the visible page.
+      </p>
+      <section class="save-area" aria-labelledby="save-title">
+        <h2 id="save-title">Save to your folder</h2>
+        <div class="row">
+          <button id="folder" class="secondary">Choose save folder</button
+          ><span id="folder-name" class="hint">No folder selected</span>
+        </div>
+        <p class="hint">
+          No account, server or extra software. Choose a folder here or in Settings.
+        </p>
+        <button id="save">Save Markdown + images</button>
+        <p id="local-status" class="hint">No files saved yet.</p>
+        <div class="row">
+          <button id="zip" class="secondary">Export ZIP</button
+          ><button id="copy" class="secondary">Copy Markdown</button>
+        </div>
+        <p class="hint">
+          The first save/export freezes this snapshot. Retry it safely, or start a new draft to make
+          changes.
+        </p>
+      </section>
+      <form id="capture-form">
+        <label>Title<input id="title" required placeholder="What went wrong?" /></label>
+        <label
+          >Description<textarea
+            id="description"
+            rows="4"
+            required
+            placeholder="What you expected and what happened"
+          ></textarea>
+        </label>
+        <label
+          >Reproduction steps<textarea
+            id="steps"
+            rows="3"
+            placeholder="Steps to reproduce the problem"
+          ></textarea>
+        </label>
+        <div class="columns">
+          <label
+            >Severity<select id="severity">
+              <option value="">Not specified</option>
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+              <option>Critical</option>
+            </select></label
+          ><label>Tags<input id="tags" placeholder="login, mobile" /></label>
+        </div>
+        <details>
+          <summary>Page and capture details</summary>
+          <label>Page title<input id="page-title" /></label
+          ><label>Page URL<input id="page-url" type="text" /></label>
+          <p id="capture-identity" class="hint"></p>
+        </details>
+      </form>
+      <section aria-labelledby="images-title">
+        <h2 id="images-title">Screenshots <span id="image-count">0</span></h2>
+        <p id="empty-images" class="hint">
+          Capture a page or add PNG/JPEG files. Images stay in the order shown.
+        </p>
+        <div id="images"></div>
+      </section>
+      <details>
+        <summary>Markdown preview and saved files</summary>
+        <pre id="preview"></pre>
+        <ul id="saved-files"></ul>
+      </details>
+      <footer>
+        <button id="new" class="secondary">New capture</button
+        ><button id="duplicate" class="secondary">Copy to a new draft</button>
+        <details>
+          <summary>Previous drafts</summary>
+          <label
+            >Retained draft<select id="archives">
+              <option value="">Select a draft</option>
+            </select></label
+          ><button id="restore-draft" class="secondary">Restore selected draft</button>
+        </details>
+        <p class="hint">
+          Drafts and images stay in this browser profile. Export them before removing the extension
+          or clearing its data.
+        </p>
+      </footer>
+    </main>
+    <dialog id="editor">
+      <form method="dialog">
+        <header>
+          <h2>Edit screenshot</h2>
+          <button value="cancel" class="secondary">Close</button>
+        </header>
+      </form>
+      <p>
+        Drag a rectangle, then choose Crop or Redact. Changes are applied only when you press Apply.
+      </p>
+      <canvas id="editor-canvas"></canvas>
+      <p id="selection" class="hint">No area selected.</p>
+      <div class="row">
+        <button id="crop" class="secondary">Crop</button
+        ><button id="redact" class="secondary">Redact in black</button
+        ><button id="restore-image" class="secondary">Restore original</button>
+      </div>
+      <div class="row">
+        <button id="apply-image">Apply changes</button
+        ><button id="cancel-image" class="secondary">Cancel</button>
+      </div>
+    </dialog>
+    <script type="module" src="sidepanel.js"></script>
+  </body>
+</html>

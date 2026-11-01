@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MyDefector-sidecar settings</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">SETTINGS</p>
+      <h1>MyDefector-sidecar</h1>
+      <p>Choose where to save your Markdown notes and screenshots. Everything stays local.</p>
+      <section class="save-area" aria-labelledby="folder-title">
+        <h2 id="folder-title">Save folder</h2>
+        <div class="row">
+          <button id="folder" type="button" class="secondary">Choose save folder</button>
+          <span id="folder-name" class="hint">Loading saved folder…</span>
+        </div>
+        <p class="hint">
+          This is the same folder used by the capture panel. Chrome may ask for permission again
+          after restarting. ZIP export is available in the panel.
+        </p>
+        <p id="folder-status" role="status" aria-live="polite"></p>
+      </section>
+      <form id="settings-form">
+        <label>Timezone<input id="timezone" required placeholder="Europe/London" /></label>
+        <p class="hint">
+          Used inside the note. Filenames always use UTC and the unique capture ID.
+        </p>
+        <label><input id="include-title" type="checkbox" /> Include title in filenames</label
+        ><label
+          >Screenshot format<select id="image-format">
+            <option value="png">PNG (lossless)</option>
+            <option value="jpeg">JPEG</option>
+          </select></label
+        >
+        <button type="submit">Save settings</button>
+      </form>
+      <p id="settings-status" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="options.js"></script>
+  </body>
+</html>

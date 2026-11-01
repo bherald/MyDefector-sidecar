@@ -1,0 +1,14 @@
+{
+  "name": "MyDefector-sidecar",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Capture page defects as portable Markdown and image bundles.",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "check": "node scripts/check.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "MyDefector-sidecar",
+  "version": "0.2.0",
+  "description": "Capture defects with screenshots and save portable Markdown bundles locally.",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "sidePanel"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Open MyDefector-sidecar and capture this page"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
+      },
+      "description": "Open MyDefector-sidecar and capture the visible page"
+    }
+  }
+}
